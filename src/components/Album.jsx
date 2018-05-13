@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { formatPrice } from '../helpers'
 
-class Fish extends Component {
+class Album extends Component {
   handleClick = () => {
     this.props.addToOrder(this.props.index)
   }
@@ -22,4 +22,4 @@ class Fish extends Component {
   }
 }
 
-export default Fish
+export default Album

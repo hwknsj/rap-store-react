@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 
-class AddFishForm extends Component {
+class AddAlbumForm extends Component {
   nameRef = React.createRef()
   priceRef = React.createRef()
   statusRef = React.createRef()
   descRef = React.createRef()
   imageRef = React.createRef()
-  createFish = event => {
+  createAlbum = event => {
     // Stop the form from submitting
     event.preventDefault()
 
@@ -17,14 +17,14 @@ class AddFishForm extends Component {
       desc: this.descRef.current.value,
       image: this.imageRef.current.value
     }
-    this.props.addFish(fish)
+    this.props.addAlbum(fish)
     console.log(fish)
     // Refresh the form
     event.currentTarget.reset()
   }
   render () {
     return (
-      <form className='fish-edit' onSubmit={this.createFish}>
+      <form className='fish-edit' onSubmit={this.createAlbum}>
         <input name='name' ref={this.nameRef} type='text' placeholder='Name' />
         <input name='price' ref={this.priceRef} type='text' placeholder='Price' />
         <select name='status' ref={this.statusRef} type='text' placeholder='Status'>
@@ -33,10 +33,10 @@ class AddFishForm extends Component {
         </select>
         <textarea name='desc' ref={this.descRef} placeholder='Desc' />
         <input name='image' ref={this.imageRef} type='text' placeholder='Image' />
-        <button type='submit'>+ Add Fish</button>
+        <button type='submit'>+ Add Album</button>
       </form>
     )
   }
 }
 
-export default AddFishForm
+export default AddAlbumForm

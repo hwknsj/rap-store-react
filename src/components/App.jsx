@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import Header from './Header.jsx'
 import Inventory from './Inventory.jsx'
 import Order from './Order.jsx'
-import sampleFishes from '../sample-fishes'
-import Fish from './Fish.jsx'
+import sampleAlbums from '../sample-albums'
+import Album from './Album.jsx'
 import base from '../base'
 
 class App extends Component {
   state = {
-    fishes: {},
+    albums: {},
     order: {}
   }
 
@@ -20,9 +20,9 @@ class App extends Component {
     if (localStorageRef) this.setState({ order: JSON.parse(localStorageRef) })
     // Set up syncState
     // NOTE: w/ no modification to Order.jsx, the if statement above runs *before* firebase can populate it
-    this.ref = base.syncState(`${params.storeID}/fishes`, {
+    this.ref = base.syncState(`${params.storeID}/albums`, {
       context: this,
-      state: 'fishes'
+      state: 'albums'
     })
   }
 
@@ -35,26 +35,26 @@ class App extends Component {
     base.removeBinding(this.ref)
   }
 
-  addFish = fish => {
+  addAlbum = fish => {
     // Take a copy of the existing state
-    const fishes = { ...this.state.fishes }
-    // Add new fish to that fishes variable
-    fishes[`fish${Date.now()}`] = fish
-    // Set new fishes object to state
-    this.setState({ fishes })
+    const albums = { ...this.state.albums }
+    // Add new fish to that albums variable
+    albums[`fish${Date.now()}`] = fish
+    // Set new albums object to state
+    this.setState({ albums })
   }
 
-  updateFish = (key, updatedFish) => {
+  updateAlbum = (key, updatedAlbum) => {
     // Take a copy of current state
-    const fishes = { ...this.state.fishes }
+    const albums = { ...this.state.albums }
     // Update that state
-    fishes[key] = updatedFish
+    albums[key] = updatedAlbum
     // Set that to state
-    this.setState({ fishes })
+    this.setState({ albums })
   }
 
-  loadSampleFishes = () => {
-    this.setState({ fishes: sampleFishes })
+  loadSampleAlbums = () => {
+    this.setState({ albums: sampleAlbums })
   }
 
   addToOrder = key => {
@@ -71,23 +71,23 @@ class App extends Component {
       <div className='catch-of-the-day'>
         <div className='menu'>
           <Header tagline='Most Necessary By Joel' />
-          <ul className='fishes'>
-            {Object.keys(this.state.fishes).map(key => (
-              <Fish
+          <ul className='albums'>
+            {Object.keys(this.state.albums).map(key => (
+              <Album
                 key={key}
                 index={key}
-                details={this.state.fishes[key]}
+                details={this.state.albums[key]}
                 addToOrder={this.addToOrder} />)
             )}
           </ul>
         </div>
         {/* Could use spread, <Order {...this.state} /> */}
-        <Order fishes={this.state.fishes} order={this.state.order} />
+        <Order albums={this.state.albums} order={this.state.order} />
         <Inventory
-          addFish={this.addFish}
-          updateFish={this.updateFish}
-          loadSampleFishes={this.loadSampleFishes}
-          fishes={this.state.fishes}
+          addAlbum={this.addAlbum}
+          updateAlbum={this.updateAlbum}
+          loadSampleAlbums={this.loadSampleAlbums}
+          albums={this.state.albums}
          />
       </div>
     )

@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
-import AddFishForm from './AddFishForm.jsx'
-import EditFishForm from './EditFishForm.jsx'
+import AddAlbumForm from './AddAlbumForm.jsx'
+import EditAlbumForm from './EditAlbumForm.jsx'
 
 class Inventory extends Component {
   render () {
     return (
       <div className='inventory'>
         <h2>Inventory</h2>
-        {Object.keys(this.props.fishes).map(key => <EditFishForm key={key} index={key} fish={this.props.fishes[key]} updateFish={this.props.updateFish} />)}
-        <AddFishForm addFish={this.props.addFish} />
-        <button onClick={this.props.loadSampleFishes}>Load Sample Fishes</button>
+        {Object.keys(this.props.albums).map(key => <EditAlbumForm key={key} index={key} fish={this.props.albums[key]} updateAlbum={this.props.updateAlbum} />)}
+        <AddAlbumForm addAlbum={this.props.addAlbum} />
+        <button onClick={this.props.loadSampleAlbums}>Load Sample Albums</button>
       </div>
     )
   }

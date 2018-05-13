@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 
-class EditFishForm extends Component {
+class EditAlbumForm extends Component {
   handleChange = event => {
     // update that fish
     // Take a copy of the current fish
-    const updatedFish = {
+    const updatedAlbum = {
       ...this.props.fish,
       [event.currentTarget.name]: event.currentTarget.value
     }
     // This change still needs to be reflected in App.jsx
     // NOTE: Need to pass down key ourselves. Check Inventory.jsx
-    this.props.updateFish(this.props.index, updatedFish)
+    this.props.updateAlbum(this.props.index, updatedAlbum)
   }
 
   render () {
@@ -29,4 +29,4 @@ class EditFishForm extends Component {
   }
 }
 
-export default EditFishForm
+export default EditAlbumForm

@@ -3,7 +3,7 @@ import { formatPrice } from '../helpers'
 
 class Order extends Component {
   renderOrder = key => {
-    const fish = this.props.fishes[key]
+    const fish = this.props.albums[key]
     const count = this.props.order[key]
     // NOTE: this makes sure we don't see anything until fish have been loaded from firebase
     if (!fish) return null
@@ -28,7 +28,7 @@ class Order extends Component {
   render() {
     const orderIds = Object.keys(this.props.order)
     const total = orderIds.reduce((prevTotal, key) => {
-      const fish = this.props.fishes[key]
+      const fish = this.props.albums[key]
       const count = this.props.order[key]
       const isAvailable = fish && fish.status === 'available'
       if (isAvailable) {
