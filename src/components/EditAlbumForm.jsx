@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 
 class EditAlbumForm extends Component {
   handleChange = event => {
-    // update that fish
-    // Take a copy of the current fish
+    // update that album
+    // Take a copy of the current album
     const updatedAlbum = {
-      ...this.props.fish,
+      ...this.props.album,
       [event.currentTarget.name]: event.currentTarget.value
     }
     // This change still needs to be reflected in App.jsx
@@ -15,15 +15,15 @@ class EditAlbumForm extends Component {
 
   render () {
     return (
-      <div className='fish-edit'>
-        <input type='text' name='name' onChange={this.handleChange} value={this.props.fish.name} />
-        <input type='text' name='price' onChange={this.handleChange} value={this.props.fish.price} />
-        <select type='text' name='status' onChange={this.handleChange} value={this.props.fish.status}>
-          <option value='available'>Fresh!</option>
-          <option value='unavailable'>Sold Out!</option>
+      <div className='album-edit'>
+        <input type='text' name='name' onChange={this.handleChange} value={this.props.album.name} />
+        <input type='text' name='price' onChange={this.handleChange} value={this.props.album.price} />
+        <select type='text' name='status' onChange={this.handleChange} value={this.props.album.status}>
+          <option value='available'>Fresh</option>
+          <option value='unavailable'>Gone, bruh</option>
         </select>
-        <textarea name='desc' onChange={this.handleChange} value={this.props.fish.desc} />
-        <input type='text' name='image' onChange={this.handleChange} value={this.props.fish.image} />
+        <textarea name='desc' onChange={this.handleChange} value={this.props.album.desc} />
+        <input type='text' name='image' onChange={this.handleChange} value={this.props.album.image} />
       </div>
     )
   }

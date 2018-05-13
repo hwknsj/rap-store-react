@@ -35,11 +35,11 @@ class App extends Component {
     base.removeBinding(this.ref)
   }
 
-  addAlbum = fish => {
+  addAlbum = album => {
     // Take a copy of the existing state
     const albums = { ...this.state.albums }
-    // Add new fish to that albums variable
-    albums[`fish${Date.now()}`] = fish
+    // Add new album to that albums variable
+    albums[`album${Date.now()}`] = album
     // Set new albums object to state
     this.setState({ albums })
   }

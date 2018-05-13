@@ -9,14 +9,14 @@ class Album extends Component {
     const { image, name, price, desc, status } = this.props.details
     const isAvailable = status === 'available'
     return (
-      <li className='menu-fish'>
+      <li className='menu-album'>
         <img src={image} alt={name} />
-        <h3 className='fish-name'>
+        <h3 className='album-name'>
           {name}
           <span className='price'>{formatPrice(price)}</span>
         </h3>
         <p>{desc}</p>
-        <button disabled={!isAvailable} onClick={this.handleClick}>{isAvailable ? 'Add to Order' : 'Sold Out!'}</button>
+        <button disabled={!isAvailable} onClick={this.handleClick}>{isAvailable ? 'Add to Order' : 'Gone, bruh'}</button>
       </li>
     )
   }

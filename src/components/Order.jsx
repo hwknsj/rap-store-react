@@ -3,24 +3,24 @@ import { formatPrice } from '../helpers'
 
 class Order extends Component {
   renderOrder = key => {
-    const fish = this.props.albums[key]
+    const album = this.props.albums[key]
     const count = this.props.order[key]
-    // NOTE: this makes sure we don't see anything until fish have been loaded from firebase
-    if (!fish) return null
-    // NOTE: 'fish && fish.status' is a cheap fix. Reloading page will quickly flash 'Sorry fish is no longer available'
-    const isAvailable = fish && fish.status === 'available'
+    // NOTE: this makes sure we don't see anything until album have been loaded from firebase
+    if (!album) return null
+    // NOTE: 'album && album.status' is a cheap fix. Reloading page will quickly flash 'Sorry album is no longer available'
+    const isAvailable = album && album.status === 'available'
 
     if (!isAvailable) {
-      // FIXME: I'm not sure why this won't work when you change fish.status to 'unavailable'
+      // FIXME: I'm not sure why this won't work when you change album.status to 'unavailable'
       return (
         <li key={key}>
-          Sorry {fish ? fish.name : 'fish'} is no longer available.
+          Sorry {album ? album.name : 'album'} is no longer available.
         </li>
       )
     }
     return (
       <li key={key}>
-        {count} lbs {fish.name} &ndash; {formatPrice(count * fish.price)}
+        <strong>{count}</strong> <em>{album.name}</em> = {formatPrice(count * album.price)}
       </li>
     )
   }
@@ -28,17 +28,18 @@ class Order extends Component {
   render() {
     const orderIds = Object.keys(this.props.order)
     const total = orderIds.reduce((prevTotal, key) => {
-      const fish = this.props.albums[key]
+      const album = this.props.albums[key]
       const count = this.props.order[key]
-      const isAvailable = fish && fish.status === 'available'
+      const isAvailable = album && album.status === 'available'
       if (isAvailable) {
-        return prevTotal + count * fish.price
+        return prevTotal + count * album.price
       }
       return prevTotal
     }, 0)
     return (
       <div className="order-wrap">
         <h2>Order</h2>
+        <div className="order-headings"></div>
         <ul className="order">{orderIds.map(this.renderOrder)}</ul>
         <div className="total">
           Total: &nbsp;
