@@ -17,13 +17,14 @@ class EditAlbumForm extends Component {
     return (
       <div className='album-edit'>
         <input type='text' name='name' onChange={this.handleChange} value={this.props.album.name} />
-        <input type='text' name='price' onChange={this.handleChange} value={this.props.album.price} />
-        <select type='text' name='status' onChange={this.handleChange} value={this.props.album.status}>
-          <option value='available'>Fresh</option>
-          <option value='unavailable'>Gone, bruh</option>
-        </select>
+        <input type='text' name='artist' onChange={this.handleChange} value={this.props.album.artist} />
+        <input type='number' name='price' onChange={this.handleChange} value={this.props.album.price} />
         <textarea name='desc' onChange={this.handleChange} value={this.props.album.desc} />
         <input type='text' name='image' onChange={this.handleChange} value={this.props.album.image} />
+        <select type='text' name='status' onChange={this.handleChange} value={this.props.album.status}>
+          <option value='available'>Fresh In Stock</option>
+          <option value='unavailable'>All gone, bruh</option>
+        </select>
       </div>
     )
   }

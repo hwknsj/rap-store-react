@@ -6,12 +6,11 @@ const Header = props => (
   // return () not necessary
   <header className='top'>
     <h1>
-      Best
-      <span className='ofThe'>
-        <span className='of'>Of</span>
-        <span className='the'>All</span>
-      </span>
-      Time
+      MOST NECESSARY
+      {/* <span className='ofThe'>
+        <span className='of'>joel.biz</span>
+        <span className='the'>presents</span>
+      </span> */}
     </h1>
     <h3 className='tagline'>
       <span>{props.tagline}</span>

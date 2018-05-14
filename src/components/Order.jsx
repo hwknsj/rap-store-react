@@ -11,16 +11,15 @@ class Order extends Component {
     const isAvailable = album && album.status === 'available'
 
     if (!isAvailable) {
-      // FIXME: I'm not sure why this won't work when you change album.status to 'unavailable'
       return (
         <li key={key}>
-          Sorry {album ? album.name : 'album'} is no longer available.
+          Sorry, {album ? album.name : 'album'} is fresh out, homie.
         </li>
       )
     }
     return (
-      <li key={key}>
-        <strong>{count}</strong> <em>{album.name}</em> = {formatPrice(count * album.price)}
+      <li key={key} className='order-item'>
+        <strong>{count}</strong> <em>{album.name}</em> {formatPrice(count * album.price)}
       </li>
     )
   }
@@ -37,11 +36,15 @@ class Order extends Component {
       return prevTotal
     }, 0)
     return (
-      <div className="order-wrap">
+      <div className='order-wrap'>
         <h2>Order</h2>
-        <div className="order-headings"></div>
-        <ul className="order">{orderIds.map(this.renderOrder)}</ul>
-        <div className="total">
+        <div className='order-headings'>
+          <span className='order-qty'>Qty</span>
+          Album
+          <span className='order-price'>Price</span>
+        </div>
+        <ul className='order'>{orderIds.map(this.renderOrder)}</ul>
+        <div className='total'>
           Total: &nbsp;
           <strong>{formatPrice(total)}</strong>
         </div>

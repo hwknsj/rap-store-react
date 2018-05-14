@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Grid, Row, Col, PageHeader } from 'react-bootstrap'
+import _ from 'lodash'
 import Header from './Header.jsx'
 import Inventory from './Inventory.jsx'
 import Order from './Order.jsx'
@@ -49,11 +51,16 @@ class App extends Component {
     const albums = { ...this.state.albums }
     // Update that state
     albums[key] = updatedAlbum
+    // Sort by artist names
+    //albums.onReOrder()
     // Set that to state
     this.setState({ albums })
   }
 
-  loadSampleAlbums = () => {
+  loadSampleAlbums = (key) => {
+    console.log(sampleAlbums, Object.keys(sampleAlbums))
+    // const sortedAlbums = _.orderBy(sampleAlbums, 'artist', 'desc')
+    //console.log(sortedAlbums)
     this.setState({ albums: sampleAlbums })
   }
 
@@ -68,27 +75,38 @@ class App extends Component {
 
   render () {
     return (
-      <div className='catch-of-the-day'>
-        <div className='menu'>
-          <Header tagline='Most Necessary By Joel' />
-          <ul className='albums'>
-            {Object.keys(this.state.albums).map(key => (
-              <Album
-                key={key}
-                index={key}
-                details={this.state.albums[key]}
-                addToOrder={this.addToOrder} />)
-            )}
-          </ul>
-        </div>
-        {/* Could use spread, <Order {...this.state} /> */}
-        <Order albums={this.state.albums} order={this.state.order} />
-        <Inventory
-          addAlbum={this.addAlbum}
-          updateAlbum={this.updateAlbum}
-          loadSampleAlbums={this.loadSampleAlbums}
-          albums={this.state.albums}
-         />
+      <div>
+        <PageHeader>
+          {this.props.match.params.storeID} Online Store
+        </PageHeader>
+        <Grid className='rap-caviar' fluid>
+          <Row className='show-grid'>
+            <Col xs={6} md={4} className='menu'>
+              <Header tagline={this.props.match.params.storeID} />
+              <ul className='albums'>
+                {Object.keys(this.state.albums).map(key => (
+                  <Album
+                    key={key}
+                    index={key}
+                    details={this.state.albums[key]}
+                    addToOrder={this.addToOrder} />)
+                )}
+              </ul>
+            </Col>
+            {/* Could use spread, <Order {...this.state} /> */}
+            <Col xs={3} md={4} className='order'>
+              <Order albums={this.state.albums} order={this.state.order} />
+            </Col>
+            <Col xs={3} md={4} className='inventory'>
+              <Inventory
+                addAlbum={this.addAlbum}
+                updateAlbum={this.updateAlbum}
+                loadSampleAlbums={this.loadSampleAlbums}
+                albums={this.state.albums}
+              />
+            </Col>
+          </Row>
+        </Grid>
       </div>
     )
   }

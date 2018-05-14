@@ -50,6 +50,7 @@
   -webkit-transform: translateY(-100%) scale(3);
           transform: translateY(-100%) scale(3);
 }
+@import url("https://use.typekit.net/hoi3wjb.css");
 @font-face {
   font-family: "haymakerregular";
   src: url("./fonts/haymaker-webfont.eot");
@@ -227,20 +228,19 @@ input::-moz-focus-inner {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-html {
-  font-size: 62.5%;
-}
 body {
-  background: #d4d4d4;
+  background: #fff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'eskapade', 'Times New Roman', 'Times', 'Georgia', serif;
   font-size: 2rem;
 }
-h1 {
-  font-family: 'blanchcaps_inline', sans-serif;
+h1,
+.album-name {
+  font-family: 'eskapade-fraktur', 'Times New Roman', 'Times', 'Georgia', serif;
   text-align: center;
   font-weight: normal;
+  letter-spacing: 0.0625em;
   margin: 0;
 }
 h2,
@@ -248,8 +248,10 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: normal;
-  font-family: 'haymakerregular', sans-serif;
+  font-weight: bold;
+  font-family: 'eskapade-fraktur', 'Times New Roman', 'Times', 'Georgia', serif;
+  text-transform: uppercase;
+  letter-spacing: 0.0625em;
 }
 h2 {
   text-align: center;
@@ -263,29 +265,24 @@ header.top {
   text-align: center;
 }
 header.top h1 {
-  font-size: 14.4rem;
-  line-height: 0.7;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  font-size: 6rem;
+  font-weight: bold;
 }
 header.top h1 .ofThe {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   font-size: 3rem;
-  color: #f5a623;
+  color: #933a3a;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background: url("images/anchor.svg") center no-repeat;
-  background-size: cover;
   padding: 0 1rem;
 }
 header.top h1 .ofThe .of {
@@ -296,7 +293,7 @@ header.top h1 .ofThe .of {
 header.top h3 {
   margin: 0;
   font-size: 2rem;
-  color: #f5a623;
+  color: #933a3a;
   position: relative;
   display: inline-block;
 }
@@ -323,7 +320,7 @@ header.top h3:after {
   top: auto;
   bottom: 7px;
 }
-.catch-of-the-day {
+.rap-caviar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -336,12 +333,12 @@ header.top h3:after {
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
 }
-.catch-of-the-day > * {
+.rap-caviar > * {
   -webkit-box-flex: 1;
       -ms-flex: 1 4 auto;
           flex: 1 4 auto;
   padding: 2rem;
-  border: 1rem double #1a1a1a;
+  border: 2px solid #1a1a1a;
   position: relative;
   background: #fff;
   -webkit-transition: all 0.3s;
@@ -350,7 +347,7 @@ header.top h3:after {
           box-shadow: 0 5px 5px rgba(0,0,0,0.1);
   overflow: scroll;
 }
-.catch-of-the-day > *:first-child {
+.rap-caviar > *:first-child {
   -ms-flex-negative: 1;
       flex-shrink: 1;
   -ms-flex-preferred-size: 50%;
@@ -358,14 +355,14 @@ header.top h3:after {
   -webkit-transform: translateX(50%) rotateY(6deg) translateX(-50%);
           transform: translateX(50%) rotateY(6deg) translateX(-50%);
 }
-.catch-of-the-day > *:nth-child(2) {
+.rap-caviar > *:nth-child(2) {
   -webkit-transform: translateX(-50%) rotateY(-14deg) translateX(50%);
           transform: translateX(-50%) rotateY(-14deg) translateX(50%);
   border-left: 0;
   border-right: 0;
   min-width: 300px;
 }
-.catch-of-the-day > *:last-child {
+.rap-caviar > *:last-child {
   -ms-flex-negative: 1;
       flex-shrink: 1;
   -ms-flex-preferred-size: 50%;
@@ -373,7 +370,36 @@ header.top h3:after {
   -webkit-transform: translateX(-50%) rotateY(10deg) translateX(50%) scale(1.08) translateX(24px);
           transform: translateX(-50%) rotateY(10deg) translateX(50%) scale(1.08) translateX(24px);
 }
-input#fold:not(:checked) ~ #main .catch-of-the-day > * {
+.menu {
+  border-right: 1px solid #000;
+}
+.inventory {
+  border-left: 1px solid #000;
+}
+.inventory button {
+  margin-bottom: 20px;
+}
+.order {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.order .order-item {
+  font-size: 1.8rem;
+}
+.order-headings {
+  text-align: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.order-headings span.order-qty {
+  text-align: left;
+  float: left;
+}
+.order-headings span.order-price {
+  text-align: right;
+  float: right;
+}
+input#fold:not(:checked) ~ #main .rap-caviar > * {
   -webkit-transform: none;
           transform: none;
 }
@@ -431,7 +457,7 @@ ul.order li.total {
 }
 ul.order li.unavailable {
   text-decoration: line-through;
-  background: #f8d0d2;
+  background: #eed3d3;
 }
 ul.order li .price {
   font-size: 1.2rem;
@@ -460,10 +486,9 @@ ul.order li span.count span {
 .album-edit input,
 .album-edit textarea,
 .album-edit select {
-  width: 33.33%;
   padding: 10px;
   line-height: 1;
-  font-size: 1.2rem;
+  font-size: 1.8rem;
   border: 0;
   border-bottom: 1px solid #000;
   border-right: 1px solid #000;
@@ -477,19 +502,26 @@ ul.order li span.count span {
 .album-edit textarea:focus,
 .album-edit select:focus {
   outline: 0;
-  background: #fef2de;
+  background: #f2f2f2;
+}
+.album-edit input {
+  width: 33.33%;
+}
+.album-edit select {
+  width: 33.33%;
 }
 .album-edit textarea {
   width: 100%;
 }
 .album-edit input:last-of-type {
-  width: 100%;
+  width: 66.66%;
 }
 .album-edit button {
   width: 100%;
   border: 0;
+  margin: 10px;
 }
-.list-of-albums{
+.list-of-albums {
   border-top: 2px solid #000;
   border-bottom: 1px solid #000;
   padding-top: 5px;
@@ -502,6 +534,7 @@ ul.order li span.count span {
   border-top: 1px solid #000;
   padding-bottom: 2rem;
   padding-top: 2rem;
+  padding-right: 1rem;
   margin-bottom: 5px;
   clear: both;
   overflow: hidden;
@@ -509,9 +542,14 @@ ul.order li span.count span {
 .menu-album p {
   margin: 0;
   font-size: 1.8rem;
+  text-align: justify;
 }
 .menu-album .album-name {
+  font-size: 3rem;
+  text-transform: none !important;
+  font-weight: bold;
   margin: 0;
+  padding-bottom: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -522,15 +560,18 @@ ul.order li span.count span {
       -ms-flex-align: center;
           align-items: center;
 }
+.menu-album .artist-name {
+  text-transform: uppercase !important;
+}
 .menu-album .price {
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
 }
-.menu-album img {
+.menu-album .img {
   float: left;
-  width: 150px;
+  max-width: 150px;
   margin-right: 1rem;
 }
 button,
@@ -548,15 +589,15 @@ input[type=submit] {
 }
 button[disabled],
 input[type=submit][disabled] {
-  color: #d12028;
+  color: #933a3a;
   background: #fff;
-  border-color: #d12028;
+  border-color: #933a3a;
   -webkit-transform: rotate(-10deg) scale(2) translateX(50%) translateY(-50%);
           transform: rotate(-10deg) scale(2) translateX(50%) translateY(-50%);
 }
 button[disabled]:hover,
 input[type=submit][disabled]:hover {
-  color: #d12028;
+  color: #933a3a;
   cursor: not-allowed;
 }
 button[disabled]:after,
@@ -592,7 +633,7 @@ input[type=submit]:focus:after {
 }
 button.warning:after,
 input[type=submit].warning:after {
-  background: #d12028;
+  background: #933a3a;
 }
 button.success:after,
 input[type=submit].success:after {

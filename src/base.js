@@ -3,12 +3,12 @@ import firebase from 'firebase'
 
 // Initialize Firebase
 let config = {
-  apiKey: 'AIzaSyC266ET8i1maUeI0QnH21CNoWtyn06XeL0',
-  authDomain: 'catch-of-the-day-joel-biz.firebaseapp.com',
-  databaseURL: 'https://catch-of-the-day-joel-biz.firebaseio.com',
-  projectId: 'catch-of-the-day-joel-biz',
-  storageBucket: 'catch-of-the-day-joel-biz.appspot.com',
-  messagingSenderId: '283335564537'
+  apiKey: 'AIzaSyBsTxXmPTG_BuxRn5X3jsTDnyLxU00C068',
+  authDomain: 'certified-fresh-hip-hop-shop.firebaseapp.com',
+  databaseURL: 'https://certified-fresh-hip-hop-shop.firebaseio.com',
+  projectId: 'certified-fresh-hip-hop-shop',
+  storageBucket: '',
+  messagingSenderId: '1082605349665'
 }
 
 const firebaseApp = firebase.initializeApp(config)

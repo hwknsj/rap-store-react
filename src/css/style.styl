@@ -5,10 +5,10 @@
 header.top
   text-align center
   h1
-    font-size 14.4rem
-    line-height 0.7 // this font has a wacky baseline
     display flex
     justify-content: center;
+    font-size 6rem
+    font-weight bold
 
     // This is a bunch of goofy CSS to make the logo look decent
     .ofThe
@@ -16,9 +16,9 @@ header.top
       font-size 3rem
       color orange
       justify-content: center;
-      align-items: center;
-      background url('images/anchor.svg') center no-repeat;
-      background-size cover
+      //align-items: center;
+      //background url('images/anchor.svg') center no-repeat;
+      //background-size cover
       padding 0 1rem
       .of
         padding-right 2rem
@@ -51,10 +51,10 @@ header.top
       bottom 7px
 
 
-.catch-of-the-day
+.rap-caviar
   display flex
   height 90vh
-  max-width:1500px
+  max-width 1500px
   margin 0 auto
   margin-top 5vh
   perspective: 1000px;
@@ -62,7 +62,7 @@ header.top
   & > *
     flex 1 4 auto
     padding 2rem
-    border 1rem double lighten(black,10%)
+    border 2px solid lighten(black,10%)
     position relative
     background white
     transition all 0.3s
@@ -82,10 +82,35 @@ header.top
       flex-basis 50%
       transform translateX(-50%) rotateY(10deg) translateX(50%) scale(1.08) translateX(24px)
 
+.menu
+  border-right 1px solid black
+
+.inventory
+  border-left 1px solid black
+  button
+    margin-bottom 20px
+
+.order
+  padding-left 1rem
+  padding-right 1rem
+  .order-item
+    font-size: 1.8rem
+
+.order-headings
+  text-align: center;
+  padding-left: 1rem
+  padding-right: 1rem
+  span.order-qty
+    text-align: left;
+    float: left;
+  span.order-price
+    text-align: right;
+    float: right;
+
 // Folding Transforms
 // Take off folding when not checked
 input#fold:not(:checked) ~ #main
-  .catch-of-the-day > *
+  .rap-caviar > *
       transform none
 
 label[for="fold"]
@@ -156,10 +181,9 @@ ul.order
   display flex
   flex-wrap wrap
   input, textarea, select
-    width 33.33%
     padding 10px
     line-height 1
-    font-size 1.2rem
+    font-size 1.8rem
     border 0
     border-bottom 1px solid black
     border-right 1px solid black
@@ -168,14 +192,19 @@ ul.order
     background white
     &:focus
       outline 0
-      background lighten(orange, 85%)
+      background lighten(black, 95%)
+  input
+    width 33.33%
+  select
+    width 33.33%
   textarea
     width 100%
   input:last-of-type
-    width 100%
+    width 66.66%
   button
     width 100%
     border 0
+    margin 10px
 
 
 // Menu Styles
@@ -191,25 +220,33 @@ ul.order
   border-top 1px solid black
   padding-bottom 2rem
   padding-top 2rem
+  padding-right 1rem
   margin-bottom 5px
   clear both
   overflow hidden
   p
     margin 0
     font-size 1.8rem
+    text-align justify
   .album-name
+    font-size 3rem
+    text-transform none !important
+    font-weight bold
     margin 0
+    padding-bottom 1rem
     display flex
     justify-content space-between
     align-items center
+  .artist-name
+    text-transform uppercase !important
   .price
-    font-size 1.4rem
+    font-size 1.8rem
     // color orange
     justify-content flex-end
     // font-family 'Open Sans Condensed'
-  img
+  .img
     float left
-    width 150px
+    max-width 150px
     margin-right 1rem
 
 button, input[type=submit]
@@ -278,7 +315,6 @@ button, input[type=submit]
     background #5EA9DD
     &:after
       background darken(#5EA9DD, 20%)
-
 
 // Store Selector
 .store-selector
