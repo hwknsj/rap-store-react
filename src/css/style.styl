@@ -97,15 +97,23 @@ header.top
     font-size: 1.8rem
 
 .order-headings
-  text-align: center;
+  text-align center
+  justify-content space-between
+  align-items center
   padding-left: 1rem
   padding-right: 1rem
+  margin-right 2rem
   span.order-qty
     text-align: left;
     float: left;
   span.order-price
     text-align: right;
     float: right;
+  span.order-title
+    justify-content center
+    text-align center
+    margin-right 2rem
+
 
 // Folding Transforms
 // Take off folding when not checked
@@ -141,14 +149,18 @@ ul.order
   li
     border-bottom 1px solid black
     padding 2rem 0
+    margin-right 2rem
     display flex
     font-size 1.4rem
     justify-content space-between
     align-items center
     &:hover
       // padding 1rem 0
-      button
+      button.order-remove
         display inline
+        margin-right -2rem
+        justify-content right
+        float right
     button
       border 0
       display none

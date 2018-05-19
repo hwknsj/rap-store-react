@@ -57,6 +57,15 @@ class App extends Component {
     this.setState({ albums })
   }
 
+  deleteAlbum = (key) => {
+    // Take a copy of current state
+    const albums = { ...this.state.albums }
+    // Update state to null (required by firebase)
+    albums[key] = null
+    // Set that to state
+    this.setState({ albums })
+  }
+
   loadSampleAlbums = (key) => {
     console.log(sampleAlbums, Object.keys(sampleAlbums))
     // const sortedAlbums = _.orderBy(sampleAlbums, 'artist', 'desc')
@@ -101,6 +110,7 @@ class App extends Component {
               <Inventory
                 addAlbum={this.addAlbum}
                 updateAlbum={this.updateAlbum}
+                deleteAlbum={this.deleteAlbum}
                 loadSampleAlbums={this.loadSampleAlbums}
                 albums={this.state.albums}
               />

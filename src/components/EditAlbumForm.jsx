@@ -25,6 +25,9 @@ class EditAlbumForm extends Component {
           <option value='available'>Fresh In Stock</option>
           <option value='unavailable'>All gone, bruh</option>
         </select>
+        <button onClick={() => this.props.deleteAlbum(this.props.index)}>
+          Delete Album
+        </button>
       </div>
     )
   }

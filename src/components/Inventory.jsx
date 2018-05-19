@@ -9,7 +9,12 @@ class Inventory extends Component {
         <h2>Inventory</h2>
         <button onClick={this.props.loadSampleAlbums}>Load <em>Joel's Most Necessary</em></button>
         <br />
-        {Object.keys(this.props.albums).map(key => <EditAlbumForm key={key} index={key} album={this.props.albums[key]} updateAlbum={this.props.updateAlbum} />)}
+        {Object.keys(this.props.albums).map(key => <EditAlbumForm
+          key={key}
+          index={key}
+          album={this.props.albums[key]}
+          updateAlbum={this.props.updateAlbum}
+          deleteAlbum={this.props.deleteAlbum} />)}
         <AddAlbumForm addAlbum={this.props.addAlbum} />
       </div>
     )

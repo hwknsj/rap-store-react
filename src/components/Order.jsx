@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { ListGroup, ListGroupItem, Glyphicon } from 'react-bootstrap'
 import { formatPrice } from '../helpers'
 
 class Order extends Component {
@@ -18,8 +19,12 @@ class Order extends Component {
       )
     }
     return (
+      // <li key={key} className='order-item'>
+      //   <strong>{count}</strong> <em>{album.name}</em> {formatPrice(count * album.price)}
+      // </li>
       <li key={key} className='order-item'>
         <strong>{count}</strong> <em>{album.name}</em> {formatPrice(count * album.price)}
+        <button className='order-remove'><Glyphicon glyph='remove' /></button>
       </li>
     )
   }
@@ -40,10 +45,13 @@ class Order extends Component {
         <h2>Order</h2>
         <div className='order-headings'>
           <span className='order-qty'>Qty</span>
-          Album
+          <span className='order-title'>Album</span>
           <span className='order-price'>Price</span>
         </div>
         <ul className='order'>{orderIds.map(this.renderOrder)}</ul>
+        {/* <ListGroup className='order'>
+          {orderIds.map(this.renderOrder)}
+        </ListGroup> */}
         <div className='total'>
           Total: &nbsp;
           <strong>{formatPrice(total)}</strong>

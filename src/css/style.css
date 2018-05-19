@@ -51,20 +51,6 @@
           transform: translateY(-100%) scale(3);
 }
 @import url("https://use.typekit.net/hoi3wjb.css");
-@font-face {
-  font-family: "haymakerregular";
-  src: url("./fonts/haymaker-webfont.eot");
-  src: url("./fonts/haymaker-webfont.eot?#iefix") format("embedded-opentype"), url("./fonts/haymaker-webfont.woff") format("woff"), url("./fonts/haymaker-webfont.ttf") format("truetype"), url("./fonts/haymaker-webfont.svg#haymakerregular") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'blanchcaps_inline';
-  src: url("./fonts/blanch_caps_inline-webfont.eot");
-  src: url("./fonts/blanch_caps_inline-webfont.eot?#iefix") format('embedded-opentype'), url("./fonts/blanch_caps_inline-webfont.woff") format('woff'), url("./fonts/blanch_caps_inline-webfont.ttf") format('truetype'), url("./fonts/blanch_caps_inline-webfont.svg#blanchcaps_inline") format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
 article,
 aside,
 details,
@@ -388,8 +374,15 @@ header.top h3:after {
 }
 .order-headings {
   text-align: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding-left: 1rem;
   padding-right: 1rem;
+  margin-right: 2rem;
 }
 .order-headings span.order-qty {
   text-align: left;
@@ -398,6 +391,13 @@ header.top h3:after {
 .order-headings span.order-price {
   text-align: right;
   float: right;
+}
+.order-headings span.order-title {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  margin-right: 2rem;
 }
 input#fold:not(:checked) ~ #main .rap-caviar > * {
   -webkit-transform: none;
@@ -430,6 +430,7 @@ ul {
 ul.order li {
   border-bottom: 1px solid #000;
   padding: 2rem 0;
+  margin-right: 2rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -441,8 +442,13 @@ ul.order li {
       -ms-flex-align: center;
           align-items: center;
 }
-ul.order li:hover button {
+ul.order li:hover button.order-remove {
   display: inline;
+  margin-right: -2rem;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+  float: right;
 }
 ul.order li button {
   border: 0;
