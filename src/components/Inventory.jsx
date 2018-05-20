@@ -5,7 +5,7 @@ import EditAlbumForm from './EditAlbumForm.jsx'
 class Inventory extends Component {
   render () {
     return (
-      <div>
+      <div className='inventory-wrap'>
         <h2>Inventory</h2>
         <button onClick={this.props.loadSampleAlbums}>Load <em>Joel's Most Necessary</em></button>
         <br />

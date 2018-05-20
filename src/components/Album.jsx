@@ -13,16 +13,23 @@ class Album extends Component {
     const albumInstance = (
       <Media className='menu-album'>
         {/* <Media.Left> */}
-
         {/* </Media.Left> */}
         <Media.Body>
-          <Media.Heading className='album-name'>{name} <small className='artist-name'>{artist}</small>
+          <Media.Heading className='album-name'>
+            <span>{name} <br />
+              <small className='artist-name'>{artist}</small>
+            </span>
             <span className='price'>{formatPrice(price)}</span>
           </Media.Heading>
           <Image src={image} alt={name} className='img' />
           <p>{desc}</p>
           <Clearfix></Clearfix>
-          <button className={isAvailable ? 'pull-right' : ''} disabled={!isAvailable} onClick={this.handleClick}>{isAvailable ? 'Get It' : 'Too late, bruh'}</button>
+          <button
+            className={isAvailable ? 'pull-right' : ''}
+            disabled={!isAvailable}
+            onClick={this.handleClick} >
+            {isAvailable ? 'Get It' : 'Too late, bruh'}
+          </button>
         </Media.Body>
       </Media>
     )

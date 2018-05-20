@@ -1,27 +1,28 @@
 html
   //font-size 62.5%
 
+$bodyfonts = 'eskapade','Times New Roman','Times','Georgia',serif
+$headingfonts = 'eskapade-fraktur','Times New Roman','Times','Georgia',serif
+
 body
   background #FFFFFF
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
-  font-family 'eskapade','Times New Roman','Times','Georgia',serif;
+  font-family $bodyfonts
   font-size 2rem
 
-h1, .album-name
-  font-family 'eskapade-fraktur','Times New Roman','Times','Georgia',serif;
+h1
+  font-family $headingfonts
   text-align center
   font-weight normal
   letter-spacing: 0.0625em;
   margin 0
 
-
-
 h2,h3,h4,h5,h6
   font-weight bold
-  font-family 'eskapade-fraktur','Times New Roman','Times','Georgia',serif;
+  font-family $headingfonts
   text-transform uppercase
-  letter-spacing: 0.0625em;
+  letter-spacing: 0.0625em
 
 h2
   text-align center

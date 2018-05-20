@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Grid, Row, Col, PageHeader } from 'react-bootstrap'
-import _ from 'lodash'
+// import _ from 'lodash'
 import Header from './Header.jsx'
 import Inventory from './Inventory.jsx'
 import Order from './Order.jsx'
@@ -82,6 +82,21 @@ class App extends Component {
     this.setState({ order })
   }
 
+  removeFromOrder = key => {
+    // Copy the current state
+    const order = { ...this.state.order }
+    // Either decrease qty by 1, or delete
+    // NOTE: delete is ok here because order is held in localStorage
+    // TODO: Make this more concise
+    if (order[key] > 1) {
+      order[key] -= 1
+    } else {
+      delete order[key]
+    }
+    // Call setState to update our state object
+    this.setState({ order })
+  }
+
   render () {
     return (
       <div>
@@ -104,7 +119,11 @@ class App extends Component {
             </Col>
             {/* Could use spread, <Order {...this.state} /> */}
             <Col xs={3} md={4} className='order'>
-              <Order albums={this.state.albums} order={this.state.order} />
+              <Order
+                albums={this.state.albums}
+                order={this.state.order}
+                removeFromOrder={this.removeFromOrder}
+              />
             </Col>
             <Col xs={3} md={4} className='inventory'>
               <Inventory

@@ -221,8 +221,7 @@ body {
   font-family: 'eskapade', 'Times New Roman', 'Times', 'Georgia', serif;
   font-size: 2rem;
 }
-h1,
-.album-name {
+h1 {
   font-family: 'eskapade-fraktur', 'Times New Roman', 'Times', 'Georgia', serif;
   text-align: center;
   font-weight: normal;
@@ -247,8 +246,13 @@ h2 {
 h3 {
   font-size: 3rem;
 }
+.page-header {
+  border: 0;
+}
 header.top {
   text-align: center;
+  border-bottom: 1px solid #000;
+  padding-bottom: 2rem;
 }
 header.top h1 {
   display: -webkit-box;
@@ -259,22 +263,6 @@ header.top h1 {
           justify-content: center;
   font-size: 6rem;
   font-weight: bold;
-}
-header.top h1 .ofThe {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  font-size: 3rem;
-  color: #933a3a;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: 0 1rem;
-}
-header.top h1 .ofThe .of {
-  padding-right: 2rem;
-  position: relative;
-  right: -0.5rem;
 }
 header.top h3 {
   margin: 0;
@@ -356,49 +344,6 @@ header.top h3:after {
   -webkit-transform: translateX(-50%) rotateY(10deg) translateX(50%) scale(1.08) translateX(24px);
           transform: translateX(-50%) rotateY(10deg) translateX(50%) scale(1.08) translateX(24px);
 }
-.menu {
-  border-right: 1px solid #000;
-}
-.inventory {
-  border-left: 1px solid #000;
-}
-.inventory button {
-  margin-bottom: 20px;
-}
-.order {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-.order .order-item {
-  font-size: 1.8rem;
-}
-.order-headings {
-  text-align: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  margin-right: 2rem;
-}
-.order-headings span.order-qty {
-  text-align: left;
-  float: left;
-}
-.order-headings span.order-price {
-  text-align: right;
-  float: right;
-}
-.order-headings span.order-title {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  text-align: center;
-  margin-right: 2rem;
-}
 input#fold:not(:checked) ~ #main .rap-caviar > * {
   -webkit-transform: none;
           transform: none;
@@ -427,57 +372,108 @@ ul {
   margin: 0;
   padding: 0;
 }
-ul.order li {
-  border-bottom: 1px solid #000;
-  padding: 2rem 0;
-  margin-right: 2rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  font-size: 1.4rem;
+.menu,
+.order,
+.inventory {
+  padding-top: 2rem;
+}
+.menu {
+  border-right: 1px solid #000;
+}
+.inventory {
+  border-left: 1px solid #000;
+}
+.inventory button {
+  margin-bottom: 20px;
+}
+.order {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.order .order-headings {
+  border-bottom: 2px solid #000;
+  padding-bottom: 0.5rem;
+}
+.order .order-item {
+  font-size: 1.8rem;
+  padding-right: 2rem;
+}
+.order-headings,
+.order-item {
+  text-align: center;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
-ul.order li:hover button.order-remove {
-  display: inline;
-  margin-right: -2rem;
-  -webkit-box-pack: right;
-      -ms-flex-pack: right;
-          justify-content: right;
-  float: right;
-}
-ul.order li button {
-  border: 0;
-  display: none;
-  line-height: 1;
-  padding: 0;
-}
-ul.order li.total {
-  font-weight: 600;
-  border-bottom: 3px solid #000;
-  border-top: 3px double #000;
-}
-ul.order li.unavailable {
-  text-decoration: line-through;
-  background: #eed3d3;
-}
-ul.order li .price {
-  font-size: 1.2rem;
-}
-ul.order li span.count {
-  position: relative;
-  overflow: hidden;
+.order-headings span.order-qty,
+.order-item span.order-qty {
+  text-align: left;
   float: left;
 }
-ul.order li span.count span {
-  display: inline-block;
+.order-headings span.order-price,
+.order-item span.order-price {
+  text-align: right;
+  float: right;
 }
-.order-title {
+.order-headings span.order-title,
+.order-item span.order-title {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-item-align: center;
+      align-self: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+ul.order {
+  padding-top: 0;
+}
+ul.order li {
+  border-top: 1px solid #000;
+  padding: 2rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1.4rem;
+}
+ul.order li:first-child {
+  border: 0;
+}
+ul.order li button {
+  position: absolute;
+  border: 0;
+  right: 0;
+  margin-right: 1rem;
+  padding: 0;
+}
+ul.order li.unavailable {
+  color: #a94343;
+  font-size: 1.8rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+ul.order li .price {
+  font-size: 1.6rem;
+}
+.order-wrap .total {
+  padding: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-top: 2px solid #000;
 }
 .album-edit {
   margin-bottom: 20px;
@@ -525,7 +521,8 @@ ul.order li span.count span {
 .album-edit button {
   width: 100%;
   border: 0;
-  margin: 10px;
+  margin: 0;
+  padding: 10px;
 }
 .list-of-albums {
   border-top: 2px solid #000;
@@ -536,10 +533,9 @@ ul.order li span.count span {
           transform: translateZ(0);
 }
 .menu-album {
-  border-bottom: 2px solid #000;
   border-top: 1px solid #000;
-  padding-bottom: 2rem;
-  padding-top: 2rem;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
   padding-right: 1rem;
   margin-bottom: 5px;
   clear: both;
@@ -548,7 +544,7 @@ ul.order li span.count span {
 .menu-album p {
   margin: 0;
   font-size: 1.8rem;
-  text-align: justify;
+  text-align: left;
 }
 .menu-album .album-name {
   font-size: 3rem;
@@ -562,15 +558,18 @@ ul.order li span.count span {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+.menu-album .album-name span:first-child {
+  text-align: left;
 }
 .menu-album .artist-name {
   text-transform: uppercase !important;
 }
 .menu-album .price {
-  font-size: 1.8rem;
+  font-size: 2rem;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;

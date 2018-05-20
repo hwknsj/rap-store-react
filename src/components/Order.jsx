@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ListGroup, ListGroupItem, Glyphicon } from 'react-bootstrap'
+import { Glyphicon } from 'react-bootstrap'
 import { formatPrice } from '../helpers'
 
 class Order extends Component {
@@ -13,18 +13,20 @@ class Order extends Component {
 
     if (!isAvailable) {
       return (
-        <li key={key}>
-          Sorry, {album ? album.name : 'album'} is fresh out, homie.
+        <li key={key} className='unavailable'>
+          Sorry, &nbsp; <em>{album ? album.name : 'album'}</em> &nbsp; is fresh out, homie.
         </li>
       )
     }
+
     return (
-      // <li key={key} className='order-item'>
-      //   <strong>{count}</strong> <em>{album.name}</em> {formatPrice(count * album.price)}
-      // </li>
       <li key={key} className='order-item'>
-        <strong>{count}</strong> <em>{album.name}</em> {formatPrice(count * album.price)}
-        <button className='order-remove'><Glyphicon glyph='remove' /></button>
+        <span className='order-qty'><strong>{count}</strong></span>
+        <span className='order-title'><em>{album.name}</em></span>
+        <span className='order-price'>
+          <strong className='price'>{formatPrice(count * album.price)}</strong>
+        </span>
+        <button className='order-remove' onClick={() => this.props.removeFromOrder(key)}><Glyphicon glyph='remove' /></button>
       </li>
     )
   }
@@ -40,11 +42,12 @@ class Order extends Component {
       }
       return prevTotal
     }, 0)
+
     return (
       <div className='order-wrap'>
         <h2>Order</h2>
         <div className='order-headings'>
-          <span className='order-qty'>Qty</span>
+          <span className='order-qty'>Qty.</span>
           <span className='order-title'>Album</span>
           <span className='order-price'>Price</span>
         </div>
