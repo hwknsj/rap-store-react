@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { Glyphicon } from 'react-bootstrap'
 import { formatPrice } from '../helpers'
 
@@ -6,6 +7,11 @@ class Order extends Component {
   renderOrder = key => {
     const album = this.props.albums[key]
     const count = this.props.order[key]
+    const transitionOptions = {
+      classNames: 'order',
+      key,
+      timeout: { enter: 250, exit: 250 }
+    }
     // NOTE: this makes sure we don't see anything until album have been loaded from firebase
     if (!album) return null
     // NOTE: 'album && album.status' is a cheap fix. Reloading page will quickly flash 'Sorry album is no longer available'
@@ -13,21 +19,38 @@ class Order extends Component {
 
     if (!isAvailable) {
       return (
-        <li key={key} className='unavailable'>
-          Sorry, &nbsp; <em>{album ? album.name : 'album'}</em> &nbsp; is fresh out, homie.
-        </li>
+        <CSSTransition {...transitionOptions}
+        >
+          <li key={key} className='unavailable'>
+            Sorry, &nbsp; <em>{album ? album.name : 'album'}</em> &nbsp; is fresh out, homie.
+          </li>
+        </CSSTransition>
       )
     }
 
     return (
-      <li key={key} className='order-item'>
-        <span className='order-qty'><strong>{count}</strong></span>
-        <span className='order-title'><em>{album.name}</em></span>
-        <span className='order-price'>
-          <strong className='price'>{formatPrice(count * album.price)}</strong>
-        </span>
-        <button className='order-remove' onClick={() => this.props.removeFromOrder(key)}><Glyphicon glyph='remove' /></button>
-      </li>
+      <CSSTransition {...transitionOptions}>
+        <li key={key} className='order-item'>
+          <TransitionGroup component='span' className='order-qty'>
+            <CSSTransition
+              classNames='order-qty'
+              key={count}
+              timeout={ { enter: 250, exit: 250 } }
+            >
+              <span className='order-qty'><strong>{count}</strong></span>
+            </CSSTransition>
+          </TransitionGroup>
+          <span className='order-title'><em>{album.name}</em></span>
+          <span className='order-price'>
+            <strong className='price'>{formatPrice(count * album.price)}</strong>
+          </span>
+          <button
+            className='order-remove'
+            onClick={() => this.props.removeFromOrder(key)}>
+            <Glyphicon glyph='remove' />
+          </button>
+        </li>
+      </CSSTransition>
     )
   }
 
@@ -51,7 +74,11 @@ class Order extends Component {
           <span className='order-title'>Album</span>
           <span className='order-price'>Price</span>
         </div>
-        <ul className='order'>{orderIds.map(this.renderOrder)}</ul>
+        {/* <ul className='order'> */}
+        <TransitionGroup component='ul' className='order'>
+          {orderIds.map(this.renderOrder)}
+        </TransitionGroup>
+        {/* </ul> */}
         {/* <ListGroup className='order'>
           {orderIds.map(this.renderOrder)}
         </ListGroup> */}

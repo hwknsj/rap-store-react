@@ -6,37 +6,35 @@
 */
 
 .order-enter
-  transform: translateX(-120%)
-  transition 0.5s
-  max-height: 0
-  padding 0 !important
+  opacity: 0.1
+  transition 0.25s
+  //max-height: 0
+  //padding 0 !important
   &.order-enter-active
-    max-height 60px
-    transform: translateX(0)
-    padding 2rem 0 !important
+    //max-height 60px
+    opacity: 1
+    //padding 2rem 0 !important
 
 .order-exit
-  transition 0.5s
-  transform: translateX(0)
+  transition 0.25s
+  opacity: 1
   &.order-exit-active
-    transform: translateX(120%)
+    opacity: 0
     padding: 0
 
-.count-enter
-  background: red
-  transition .5s
-  transform translateY(100%)
-  &.count-enter-active
-    background: yellow
-    transform translateY(0)
+.order-qty-enter
+  transition 0.25s
+  transform scale(0)
+  &.order-qty-enter-active
+    transform scale(2)
 
-.count-exit
-  background: black
-  transform translateY(0)
-  transition .5s
-  position absolute
-  left 0
-  bottom 0
-  &.count-exit-active
+.order-qty-exit
+  opacity 1
+  transition 0.25s
+  // position absolute
+  // left 0
+  // bottom 0
+  &.order-qty-exit-active
     background green
-    transform translateY(-100%) scale(3)
+    opacity 0
+    display none
