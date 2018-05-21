@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 // import render from 'react-dom'
 import { getFunName } from '../helpers.js'
 
@@ -7,6 +8,9 @@ class StorePicker extends Component {
   //   super()
   //   this.goToStore = this.goToStore.bind(this)
   // }
+  static propTypes = {
+    history: PropTypes.array
+  }
 
   // myInput is a prop on the component
   myInput = React.createRef()

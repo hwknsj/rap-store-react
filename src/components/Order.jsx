@@ -1,9 +1,23 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { Glyphicon } from 'react-bootstrap'
 import { formatPrice } from '../helpers'
 
 class Order extends Component {
+  static propTypes = {
+    albums: PropTypes.shape({
+      image: PropTypes.string,
+      name: PropTypes.string,
+      artist: PropTypes.string,
+      desc: PropTypes.string,
+      status: PropTypes.string,
+      price: PropTypes.number
+    }),
+    order: PropTypes.object,
+    removeFromOrder: PropTypes.func
+  }
+
   renderOrder = key => {
     const album = this.props.albums[key]
     const count = this.props.order[key]

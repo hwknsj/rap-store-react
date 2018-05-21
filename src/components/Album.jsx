@@ -1,8 +1,22 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { formatPrice } from '../helpers'
 import { Media, Image, Clearfix } from 'react-bootstrap'
 
 class Album extends Component {
+  static propTypes = {
+    index: PropTypes.string,
+    details: PropTypes.shape({
+      image: PropTypes.string,
+      name: PropTypes.string,
+      artist: PropTypes.string,
+      desc: PropTypes.string,
+      status: PropTypes.string,
+      price: PropTypes.number
+    }),
+    addToOrder: PropTypes.func
+  }
+
   handleClick = () => {
     this.props.addToOrder(this.props.index)
   }

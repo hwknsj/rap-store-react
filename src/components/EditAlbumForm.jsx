@@ -1,6 +1,20 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class EditAlbumForm extends Component {
+  static propTypes = {
+    index: PropTypes.string,
+    album: PropTypes.shape({
+      image: PropTypes.string,
+      name: PropTypes.string,
+      artist: PropTypes.string,
+      desc: PropTypes.string,
+      status: PropTypes.string,
+      price: PropTypes.number
+    }),
+    deleteAlbum: PropTypes.func
+  }
+
   handleChange = event => {
     // update that album
     // Take a copy of the current album

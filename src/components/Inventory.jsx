@@ -1,8 +1,24 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import AddAlbumForm from './AddAlbumForm.jsx'
 import EditAlbumForm from './EditAlbumForm.jsx'
 
 class Inventory extends Component {
+  static propTypes = {
+    albums: PropTypes.shape({
+      image: PropTypes.string,
+      name: PropTypes.string,
+      artist: PropTypes.string,
+      desc: PropTypes.string,
+      status: PropTypes.string,
+      price: PropTypes.number
+    }),
+    addAlbum: PropTypes.func,
+    updateAlbum: PropTypes.func,
+    deleteAlbum: PropTypes.func,
+    loadSampleAlbums: PropTypes.func
+  }
+
   render () {
     return (
       <div className='inventory-wrap'>

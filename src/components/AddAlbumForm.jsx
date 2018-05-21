@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class AddAlbumForm extends Component {
   nameRef = React.createRef()
@@ -7,6 +8,11 @@ class AddAlbumForm extends Component {
   statusRef = React.createRef()
   descRef = React.createRef()
   imageRef = React.createRef()
+
+  static propTypes = {
+    addAlbum: PropTypes.func
+  }
+
   createAlbum = event => {
     // Stop the form from submitting
     event.preventDefault()
@@ -20,7 +26,6 @@ class AddAlbumForm extends Component {
       image: this.imageRef.current.value
     }
     this.props.addAlbum(album)
-    console.log(album)
     // Refresh the form
     event.currentTarget.reset()
   }
