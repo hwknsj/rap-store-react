@@ -132,6 +132,7 @@ class App extends Component {
                 deleteAlbum={this.deleteAlbum}
                 loadSampleAlbums={this.loadSampleAlbums}
                 albums={this.state.albums}
+                storeID={this.props.match.params.storeID}
               />
             </Col>
           </Row>
