@@ -9,7 +9,7 @@ class StorePicker extends Component {
   //   this.goToStore = this.goToStore.bind(this)
   // }
   static propTypes = {
-    history: PropTypes.array
+    history: PropTypes.object
   }
 
   // myInput is a prop on the component

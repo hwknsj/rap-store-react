@@ -4,7 +4,7 @@ import firebase from 'firebase'
 import AddAlbumForm from './AddAlbumForm.jsx'
 import EditAlbumForm from './EditAlbumForm.jsx'
 import Login from './Login.jsx'
-import base, { firebaseApp } from '../base'
+import base, { firebaseApp, db } from '../base'
 
 class Inventory extends Component {
   static propTypes = {
@@ -37,7 +37,8 @@ class Inventory extends Component {
 
   authHandler = async authData => {
     // Look up current store in firebase db
-    const store = await base.fetch(this.props.storeID, { context: this })
+    const store = await base.fetch(this.props.storeID, { context: this//, then (data) { console.log(data) }
+    })
     // Claim it if there is no owner
     if (!store.owner) {
       // save it as our own
@@ -54,7 +55,9 @@ class Inventory extends Component {
 
   authenticate = provider => {
     const authProvider = new firebase.auth[`${provider}AuthProvider`]()
-    firebaseApp.auth().signInWithPopup(authProvider).then(this.authHandler)
+    firebaseApp.auth().signInWithPopup(authProvider)
+      .then(this.authHandler)
+      .catch((error) => alert(error))
   }
 
   logout = async () => {
@@ -74,11 +77,13 @@ class Inventory extends Component {
     if (this.state.uid !== this.state.owner) {
       return (
         <div>
-          <p>Sorry, mane. You're not the owner.</p>
+          <p>Sorry, dog. This ain't your store.</p>
           {logout}
         </div>
       )
     }
+
+    // User must be the owner to access the inventory
     return (
       <div className='inventory-wrap'>
         <h2>Inventory</h2>

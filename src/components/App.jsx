@@ -18,7 +18,6 @@ class App extends Component {
     const { params } = this.props.match
     // first reinstate our localStorage
     const localStorageRef = localStorage.getItem(params.storeID)
-    // console.log(localStorageRef)
     if (localStorageRef) this.setState({ order: JSON.parse(localStorageRef) })
     // Set up syncState
     // NOTE: w/ no modification to Order.jsx, the if statement above runs *before* firebase can populate it
@@ -67,7 +66,7 @@ class App extends Component {
   }
 
   loadSampleAlbums = (key) => {
-    console.log(sampleAlbums, Object.keys(sampleAlbums))
+    // console.log(sampleAlbums, Object.keys(sampleAlbums))
     // const sortedAlbums = _.orderBy(sampleAlbums, 'artist', 'desc')
     //console.log(sortedAlbums)
     this.setState({ albums: sampleAlbums })
@@ -88,11 +87,12 @@ class App extends Component {
     // Either decrease qty by 1, or delete
     // NOTE: delete is ok here because order is held in localStorage
     // TODO: Make this more concise
-    if (order[key] > 1) {
-      order[key] -= 1
-    } else {
-      delete order[key]
-    }
+    order[key] > 1 ? order[key] -= 1 : delete order[key]
+    // if (order[key] > 1) {
+    //   order[key] -= 1
+    // } else {
+    //   delete order[key]
+    // }
     // Call setState to update our state object
     this.setState({ order })
   }
