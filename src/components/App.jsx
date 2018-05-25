@@ -105,7 +105,7 @@ class App extends Component {
         </PageHeader>
         <Grid className='rap-caviar' fluid>
           <Row className='show-grid'>
-            <Col xs={6} md={4} className='menu'>
+            <Col xs={12} sm={4} md={4} className='menu'>
               <Header tagline={this.props.match.params.storeID} />
               <ul className='albums'>
                 {Object.keys(this.state.albums).map(key => (
@@ -118,14 +118,14 @@ class App extends Component {
               </ul>
             </Col>
             {/* Could use spread, <Order {...this.state} /> */}
-            <Col xs={3} md={4} className='order'>
+            <Col xs={12} sm={4} md={4} className='order'>
               <Order
                 albums={this.state.albums}
                 order={this.state.order}
                 removeFromOrder={this.removeFromOrder}
               />
             </Col>
-            <Col xs={3} md={4} className='inventory'>
+            <Col xs={12} sm={4} md={4} className='inventory'>
               <Inventory
                 addAlbum={this.addAlbum}
                 updateAlbum={this.updateAlbum}

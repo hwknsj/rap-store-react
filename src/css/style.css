@@ -248,11 +248,12 @@ header.top h1 {
           justify-content: center;
   font-size: 6rem;
   font-weight: bold;
+  color: #313131;
 }
 header.top h3 {
   margin: 0;
   font-size: 2rem;
-  color: #933a3a;
+  color: #9e5a63;
   position: relative;
   display: inline-block;
 }
@@ -284,7 +285,7 @@ header.top h3:after {
   display: -ms-flexbox;
   display: flex;
   height: 90vh;
-  max-width: 1500px;
+  max-width: 1800px;
   margin: 0 auto;
   margin-top: 5vh;
   -webkit-perspective: 1000px;
@@ -361,12 +362,34 @@ ul {
 .order,
 .inventory {
   padding-top: 2rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 .menu {
   border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+.order .order-wrap {
+  border-bottom: 1px solid #000;
+  bottom: 0;
 }
 .inventory {
   border-left: 1px solid #000;
+}
+.inventory h2,
+.inventory .inventory-buttons {
+  text-align: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 2rem;
+}
+.inventory h2 button:first-child,
+.inventory .inventory-buttons button:first-child {
+  margin-right: 2rem;
 }
 .inventory button {
   margin-bottom: 20px;
@@ -376,7 +399,7 @@ ul {
   padding-right: 1rem;
 }
 .order .order-headings {
-  border-bottom: 2px solid #000;
+  border-bottom: 1px solid #000;
   padding-bottom: 0.5rem;
 }
 .order .order-item {
@@ -458,7 +481,7 @@ ul.order li .price {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  border-top: 2px solid #000;
+  border-top: 1px solid #000;
 }
 .album-edit {
   margin-bottom: 20px;
@@ -571,7 +594,7 @@ input[type=submit] {
   border: 1px solid #000;
   font-weight: 600;
   font-size: 1.5rem;
-  font-family: 'Open Sans';
+  font-family: 'eskapade-fraktur', 'Times New Roman', 'Times', 'Georgia', serif;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
   position: relative;
@@ -579,15 +602,18 @@ input[type=submit] {
 }
 button[disabled],
 input[type=submit][disabled] {
-  color: #933a3a;
+  color: #313131;
   background: #fff;
-  border-color: #933a3a;
-  -webkit-transform: rotate(-10deg) scale(2) translateX(50%) translateY(-50%);
-          transform: rotate(-10deg) scale(2) translateX(50%) translateY(-50%);
+  border-color: #9e5a63;
+  right: 0;
+  bottom: 0;
+  float: right;
+  -webkit-transform: scale(2) translateX(-50%) translateY(-50%);
+          transform: scale(2) translateX(-50%) translateY(-50%);
 }
 button[disabled]:hover,
 input[type=submit][disabled]:hover {
-  color: #933a3a;
+  color: #313131;
   cursor: not-allowed;
 }
 button[disabled]:after,

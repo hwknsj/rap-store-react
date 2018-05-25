@@ -13,10 +13,11 @@ header.top
     justify-content: center;
     font-size 6rem
     font-weight bold
+    color $notBlack
   h3
     margin 0
     font-size 2rem
-    color orange
+    color $anotherRed
     position relative
     display inline-block
     span
@@ -43,7 +44,7 @@ header.top
 .rap-caviar
   display flex
   height 90vh
-  max-width 1500px
+  max-width 1800px
   margin 0 auto
   margin-top 5vh
   perspective: 1000px;
@@ -102,21 +103,36 @@ ul
 
 .menu, .order, .inventory
   padding-top 2rem
+  box-sizing border-box
 
 .menu
   border-right 1px solid black
+  border-bottom 1px solid black
+
+.order .order-wrap
+  border-bottom 1px solid black
+  bottom 0
 
 .inventory
   border-left 1px solid black
+  h2
+  .inventory-buttons
+    text-align center
+    justify-content space-between
+    align-items center
+    padding-bottom 2rem
+    button:first-child
+      margin-right: 2rem
   button
     margin-bottom 20px
+
 
 // Order Pane
 .order
   padding-left 1rem
   padding-right 1rem
   .order-headings
-    border-bottom 2px solid black
+    border-bottom 1px solid black
     padding-bottom 0.5rem
   .order-item
     font-size 1.8rem
@@ -186,7 +202,7 @@ ul.order
     padding 1rem
     display flex
     justify-content space-between
-    border-top 2px solid black
+    border-top 1px solid black
 
 .album-edit
   margin-bottom 20px
@@ -270,17 +286,20 @@ button, input[type=submit]
   border 1px solid black
   font-weight 600
   font-size 1.5rem
-  font-family 'Open Sans'
+  font-family 'eskapade-fraktur','Times New Roman','Times','Georgia',serif
   transition all 0.2s
   position relative
   z-index 2
   &[disabled]
-    color red
-    background white
-    border-color red
-    transform rotate(-10deg) scale(2) translateX(50%) translateY(-50%)
+    color $notBlack
+    background #fff
+    border-color $anotherRed
+    right 0
+    bottom 0
+    float right
+    transform scale(2) translateX(-50%) translateY(-50%)
     &:hover
-      color red
+      color $notBlack
       cursor not-allowed
     &:after
       display none
