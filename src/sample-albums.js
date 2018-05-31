@@ -100,15 +100,6 @@ const albums = {
   },
 
   album12: {
-    name: 'The Infamous',
-    artist: 'Mobb Deep',
-    image: '/images/mobb-infamous.jpg',
-    desc: 'They\'re the infamous, you heard of \'em: official Queens Bridge murderers.',
-    price: 1650,
-    status: 'available'
-  },
-
-  album13: {
     name: 'Life of Pablo',
     artist: 'Kanye West',
     image: '/images/kanye-pablo.jpg',
@@ -117,7 +108,7 @@ const albums = {
     status: 'available'
   },
 
-  album14: {
+  album13: {
     name: 'Exmilitary',
     artist: 'Death Grips',
     image: '/images/dg-exmilitary.png',
@@ -126,7 +117,7 @@ const albums = {
     status: 'available'
   },
 
-  album15: {
+  album14: {
     name: 'My Name is Jeffrey',
     artist: 'Young Thug',
     image: '/images/yt-jeffrey.jpg',
@@ -135,7 +126,7 @@ const albums = {
     status: 'available'
   },
 
-  album16: {
+  album15: {
     name: 'Stankonia',
     artist: 'OutKast',
     image: '/images/outkast-stankonia.jpg',
@@ -144,7 +135,7 @@ const albums = {
     status: 'available'
   },
 
-  album17: {
+  album16: {
     name: 'Summertime 06',
     artist: 'Vince Staples',
     image: '/images/vince-summertime.jpg',
