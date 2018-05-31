@@ -1,6 +1,6 @@
 {
-  "name": "music-store",
-  "version": "0.0.1",
+  "name": "music-store-manager",
+  "version": "1.0.0",
   "author": "Joel Hawkins",
   "private": true,
   "devDependencies": {
