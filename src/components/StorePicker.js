@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 // import render from 'react-dom'
-import { getFunName } from '../helpers.js'
+import { getHipName } from '../helpers.js'
 
 class StorePicker extends Component {
   // constructor () {
@@ -24,21 +24,16 @@ class StorePicker extends Component {
     this.props.history.push(`/store/${storeName}`)
   }
 
-  // componentDidMount () {
-  //   console.log('Mounted!')
-  // }
-
   render() {
     return (
       <form className='store-selector' onSubmit={this.goToStore}>
-        {/* comment */}
-        <h2>Please Enter a Store</h2>
+        <h2>Enter Store Name <br /><small>Cop The Latest Drop | Manage Inventory</small></h2>
         <input
           type='text'
           ref={this.myInput}
           required
           placeholder='Store Name'
-          defaultValue={getFunName()}
+          defaultValue={getHipName()}
         />
         <button type='submit'>Visit Store →</button>
       </form>

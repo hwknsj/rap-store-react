@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { Tooltip, OverlayTrigger } from 'react-bootstrap'
 
 class AddAlbumForm extends Component {
   nameRef = React.createRef()
@@ -30,13 +31,22 @@ class AddAlbumForm extends Component {
     event.currentTarget.reset()
   }
   render () {
+
+    const tooltip = (
+      <Tooltip placement='bottom' id='tooltip'>
+        Paste a URL to album artwork image
+      </Tooltip>
+    )
+
     return (
       <form className='album-edit' onSubmit={this.createAlbum}>
         <input name='name' ref={this.nameRef} type='text' placeholder='Name' />
         <input name='artist' ref={this.artistRef} type='text' placeholder='Artist' />
-        <input name='price' ref={this.priceRef} type='number' placeholder='Price' />
+        <input name='price' ref={this.priceRef} type='number' placeholder={`Price`} />
         <textarea name='desc' ref={this.descRef} placeholder='Desc' />
-        <input name='image' ref={this.imageRef} type='text' placeholder='Image path' />
+        <OverlayTrigger placement="bottom" overlay={tooltip}>
+          <input name='image' ref={this.imageRef} type='text' placeholder='Image path / URL' />
+        </OverlayTrigger>
         <select name='status' ref={this.statusRef} type='text' placeholder='Status'>
           <option value='available'>Fresh In Stock</option>
           <option value='unavailable'>We out</option>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { Tooltip, OverlayTrigger } from 'react-bootstrap'
 
 class EditAlbumForm extends Component {
   static propTypes = {
@@ -27,14 +28,24 @@ class EditAlbumForm extends Component {
     this.props.updateAlbum(this.props.index, updatedAlbum)
   }
 
+
   render () {
+
+    const tooltip = (
+      <Tooltip placement='bottom' id='tooltip'>
+        Paste a URL to album artwork image
+      </Tooltip>
+    )
+
     return (
       <div className='album-edit'>
         <input type='text' name='name' onChange={this.handleChange} value={this.props.album.name} />
         <input type='text' name='artist' onChange={this.handleChange} value={this.props.album.artist} />
         <input type='number' name='price' onChange={this.handleChange} value={this.props.album.price} />
         <textarea name='desc' onChange={this.handleChange} value={this.props.album.desc} />
-        <input type='text' name='image' onChange={this.handleChange} value={this.props.album.image} />
+        <OverlayTrigger placement="bottom" overlay={tooltip}>
+          <input type='text' name='image' onChange={this.handleChange} value={this.props.album.image} />
+        </OverlayTrigger>
         <select type='text' name='status' onChange={this.handleChange} value={this.props.album.status}>
           <option value='available'>Fresh In Stock</option>
           <option value='unavailable'>All gone, bruh</option>

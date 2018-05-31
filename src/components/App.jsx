@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, Row, Col, PageHeader } from 'react-bootstrap'
-// import _ from 'lodash'
+import { Grid, Row, Col, Clearfix, PageHeader } from 'react-bootstrap'
 import Header from './Header.jsx'
 import Inventory from './Inventory.jsx'
 import Order from './Order.jsx'
@@ -28,11 +27,10 @@ class App extends Component {
   }
 
   componentDidUpdate () {
-    // console.log(this.props.match.params.storeID, JSON.stringify(this.state.order))
     localStorage.setItem(this.props.match.params.storeID, JSON.stringify(this.state.order))
   }
 
-  componontWillUnmount () {
+  componentWillUnmount () {
     base.removeBinding(this.ref)
   }
 
@@ -50,8 +48,6 @@ class App extends Component {
     const albums = { ...this.state.albums }
     // Update that state
     albums[key] = updatedAlbum
-    // Sort by artist names
-    //albums.onReOrder()
     // Set that to state
     this.setState({ albums })
   }
@@ -66,9 +62,7 @@ class App extends Component {
   }
 
   loadSampleAlbums = (key) => {
-    // console.log(sampleAlbums, Object.keys(sampleAlbums))
-    // const sortedAlbums = _.orderBy(sampleAlbums, 'artist', 'desc')
-    //console.log(sortedAlbums)
+    // TODO: Would be rad to be able to filter/search/order
     this.setState({ albums: sampleAlbums })
   }
 
@@ -86,17 +80,14 @@ class App extends Component {
     const order = { ...this.state.order }
     // Either decrease qty by 1, or delete
     // NOTE: delete is ok here because order is held in localStorage
-    // TODO: Make this more concise
     order[key] > 1 ? order[key] -= 1 : delete order[key]
-    // if (order[key] > 1) {
-    //   order[key] -= 1
-    // } else {
-    //   delete order[key]
-    // }
-    // Call setState to update our state object
     this.setState({ order })
   }
-
+  // TODO: fix borders on xs, sm, md breakpoints, defined here
+  // https://www.w3schools.com/bootstrap/bootstrap_grid_system.asp
+  // TODO: also find a way to toggle showing inventory/order panels
+  // maybe using https://react-bootstrap.github.io/components/navbar/
+  // Navbar.Toggle
   render () {
     return (
       <div>
@@ -105,7 +96,7 @@ class App extends Component {
         </PageHeader>
         <Grid className='rap-caviar' fluid>
           <Row className='show-grid'>
-            <Col xs={12} sm={4} md={4} className='menu'>
+            <Col xs={12} sm={6} md={4} className='menu'>
               <Header tagline={this.props.match.params.storeID} />
               <ul className='albums'>
                 {Object.keys(this.state.albums).map(key => (
@@ -117,15 +108,17 @@ class App extends Component {
                 )}
               </ul>
             </Col>
+            <Clearfix visibleXsBlock></Clearfix>
             {/* Could use spread, <Order {...this.state} /> */}
-            <Col xs={12} sm={4} md={4} className='order'>
+            <Col xs={12} sm={6} md={4} className='order'>
               <Order
                 albums={this.state.albums}
                 order={this.state.order}
                 removeFromOrder={this.removeFromOrder}
               />
             </Col>
-            <Col xs={12} sm={4} md={4} className='inventory'>
+            <Clearfix visibleSmBlock visibleXsBlock></Clearfix>
+            <Col xs={12} sm={12} md={4} className='inventory'>
               <Inventory
                 addAlbum={this.addAlbum}
                 updateAlbum={this.updateAlbum}

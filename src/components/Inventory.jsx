@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import firebase from 'firebase'
-//import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
 import AddAlbumForm from './AddAlbumForm.jsx'
 import EditAlbumForm from './EditAlbumForm.jsx'
 import Login from './Login.jsx'
@@ -24,48 +23,20 @@ class Inventory extends Component {
   }
 
   state = {
-    //isSignedIn: false,
+    isSignedIn: false,
     uid: null,
     owner: null
   }
 
-  // uiConfig = {
-  //   // Popup signin flow rather than redirect flow.
-  //   signInFlow: 'popup',
-  //   // We will display Google and Facebook as auth providers.
-  //   signInOptions: [
-  //     firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-  //     firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-  //     firebase.auth.GithubAuthProvider.PROVIDER_ID
-  //   ],
-  //   callbacks: {
-  //     // Avoid redirects after sign-in.
-  //     signInSuccessWithAuthResult: (authResult, redirectUrl) => {
-  //       const user = authResult.user
-  //       const credential = authResult.credential
-  //       const operationType = authResult.operationType
-  //       return true
-  //     },
-  //     signInAndRetrieveDataWithCredential: (credential) => {
-  //       return true
-  //     }
-  //   }
-  // }
-
   componentDidMount () {
-    // this.unregisterAuthObserver = firebaseApp.auth().onAuthStateChanged( user => {
-    //   this.setState({ isSignedIn: !!user })
-    // })
     firebase.auth().onAuthStateChanged ( user => {
-      if (user) {
-        this.authHandler({ user })
-      }
+      if (user) this.authHandler({ user })
     })
   }
 
-  // componontWillUnmount () {
-  //   this.unregisterAuthObserver()
-  // }
+  componentWillUnmount () {
+    if (this.state.isSignedIn) this.logout()
+  }
 
   authHandler = async authData => {
     // Look up current store in firebase db
@@ -79,6 +50,7 @@ class Inventory extends Component {
     }
     // Set the state of the Inventory component to reflect current user
     this.setState({
+      isSignedIn: true,
       uid: authData.user.uid,
       owner: store.owner || authData.user.uid
     })
@@ -87,13 +59,14 @@ class Inventory extends Component {
   authenticate = provider => {
     const authProvider = new firebase.auth[`${provider}AuthProvider`]()
     firebaseApp.auth().signInWithPopup(authProvider)
-      .then(data => {console.log(data); this.authHandler(data)})
-      .catch(error => { document.querySelector('.login-dialog').dangerouslySetInnerHTML(<p>{error}</p>) })
+      .then(this.authHandler)
+      .catch(error => alert(error))
   }
 
   logout = async () => {
     await firebase.auth().signOut()
     this.setState({
+      isSignedIn: false,
       uid: null
     })
   }
@@ -103,14 +76,13 @@ class Inventory extends Component {
     // Check if logged in
     if (!this.state.uid && !this.state.isSignedIn) {
       return <Login authenticate={this.authenticate} />
-      // return ( <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()} /> )
     }
     // Check if user is NOT owner of store
-    if (this.state.uid !== this.state.owner) {
+    if (this.state.uid !== this.state.owner && this.state.isSignedIn) {
       return (
         <div className='inventory-wrap'>
           <h2>Inventory</h2>
-          <div className={`inventory-buttons login-dialog`}>
+          <div className='inventory-buttons'>
             <p>Sorry, dog. This ain't your store.</p>
             {logout}
           </div>
@@ -123,8 +95,9 @@ class Inventory extends Component {
       <div className='inventory-wrap'>
         <h2>Inventory</h2>
         <div className='inventory-buttons'>
+          <p>What's good, {firebaseApp.auth().currentUser.displayName}?</p>
           {logout}
-          <button onClick={this.props.loadSampleAlbums}>Load <em>Joel's Most Necessary</em></button>
+          <button onClick={this.props.loadSampleAlbums}>Load Joel's Most Necessary</button>
         </div>
         {Object.keys(this.props.albums).map(key => <EditAlbumForm
           key={key}

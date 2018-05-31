@@ -7,14 +7,13 @@ const Header = props => (
   // return () not necessary
   <header className='top'>
     <h1>
-      MOST NECESSARY
-      {/* <span className='ofThe'>
-        <span className='of'>joel.biz</span>
-        <span className='the'>presents</span>
-      </span> */}
+      {props.tagline}
+    </h1>
+    <h1>
+      <small>FRESH OUT THE BOX</small>
     </h1>
     <h3 className='tagline'>
-      <span>{props.tagline}</span>
+      <span>Presented by joel.fm</span>
     </h3>
   </header>
 )

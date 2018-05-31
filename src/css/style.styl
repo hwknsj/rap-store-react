@@ -6,14 +6,15 @@
 
 header.top
   text-align center
-  border-bottom 1px solid black
+  //border-bottom 1px solid black
   padding-bottom 2rem
   h1
     display flex
-    justify-content: center;
+    justify-content center
     font-size 6rem
     font-weight bold
     color $notBlack
+    text-transform uppercase
   h3
     margin 0
     font-size 2rem
@@ -40,15 +41,14 @@ header.top
       top auto
       bottom 7px
 
-
 .rap-caviar
   display flex
   height 90vh
   max-width 1800px
   margin 0 auto
-  margin-top 5vh
-  perspective: 1000px;
-  transform-style preserve-3d
+  // margin-top 5vh
+  // perspective: 1000px;
+  // transform-style preserve-3d
   & > *
     flex 1 4 auto
     padding 2rem
@@ -58,19 +58,20 @@ header.top
     transition all 0.3s
     box-shadow 0 5px 5px rgba(0,0,0,0.1)
     overflow scroll
-    &:first-child
-      flex-shrink 1 // take 4x the extra room
-      flex-basis 50%
-      transform translateX(50%) rotateY(6deg) translateX(-50%)
-    &:nth-child(2)
-      transform translateX(-50%) rotateY(-14deg) translateX(50%)
-      border-left 0
-      border-right 0
-      min-width 300px
-    &:last-child
-      flex-shrink 1 // take 4x the extra room
-      flex-basis 50%
-      transform translateX(-50%) rotateY(10deg) translateX(50%) scale(1.08) translateX(24px)
+    transform none
+    // &:first-child
+    //   flex-shrink 1 // take 4x the extra room
+    //   flex-basis 50%
+    //   transform translateX(50%) rotateY(6deg) translateX(-50%)
+    // &:nth-child(2)
+    //   transform translateX(-50%) rotateY(-14deg) translateX(50%)
+    //   border-left 0
+    //   border-right 0
+    //   min-width 300px
+    // &:last-child
+    //   flex-shrink 1 // take 4x the extra room
+    //   flex-basis 50%
+    //   transform translateX(-50%) rotateY(10deg) translateX(50%) scale(1.08) translateX(24px)
 
 // Folding Transforms
 // Take off folding when not checked
@@ -79,6 +80,7 @@ input#fold:not(:checked) ~ #main
       transform none
 
 label[for="fold"]
+  //display none
   position absolute
   top 1rem
   left 1rem
@@ -115,16 +117,22 @@ ul
 
 .inventory
   border-left 1px solid black
-  h2
+  .login
+    p
+      text-align center
+      padding-bottom 2rem
+  h2,
   .inventory-buttons
     text-align center
     justify-content space-between
     align-items center
-    padding-bottom 2rem
-    button:first-child
+    // padding-top 1rem
+    padding-bottom 0.5rem
+    button
+      margin-top 1rem
       margin-right: 2rem
   button
-    margin-bottom 20px
+    margin-bottom 2rem
 
 
 // Order Pane
