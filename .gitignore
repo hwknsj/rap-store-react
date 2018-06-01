@@ -1,5 +1,6 @@
 node_modules/
+build/
 build/**
-./package-lock.json
-./yarn.lock
-./*.zip
+package-lock.json
+yarn.lock
+*.zip
