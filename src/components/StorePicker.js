@@ -1,13 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-// import render from 'react-dom'
 import { getHipName } from '../helpers.js'
 
 class StorePicker extends Component {
-  // constructor () {
-  //   super()
-  //   this.goToStore = this.goToStore.bind(this)
-  // }
   static propTypes = {
     history: PropTypes.object
   }
@@ -19,7 +14,6 @@ class StorePicker extends Component {
   goToStore = event => {
     // Stop the form from submitting
     event.preventDefault()
-    //console.log(this.setStore)
     const storeName = this.myInput.current.value
     this.props.history.push(`/store/${storeName}`)
   }
