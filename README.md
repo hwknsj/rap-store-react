@@ -24,9 +24,11 @@ yarn build
 ```
 
 ### Logic
-You will be prompted to enter a Store Name. If the name you enter does not exist, it will be created. At this point it has *no owner*, so as soon as you login using Facebook, Github, or Twitter, you will be designated as the owner and no one else will be able to edit your store's inventory.
+You will first be prompted to enter a Store Name to manage. If the name you enter does not exist, it will be created. At this point it has *no owner*, so as soon as you login using Facebook, Github, or Twitter, you will be designated as the owner and no one else will be able to edit your store's inventory.
 
-If you go to an existing store, for example "RapCaviar" (my creation), you can see the store but you **cannot edit it without authenticating**.
+Once authenticated, you will see the forms to add albums to your inventory. Click the "Load Joel's Most Necessary" button to populate the inventory with sample albums so you don't have to think to hard. When finished, you can click the "Logout" button. *Your Login and order will persist when you refresh the page.*
+
+If you go to an existing store, for example "RapCaviar" (my creation), you can see the store but you **cannot edit it without authenticating**, however you can edit your personal order.
 
 ## Tools used
 
