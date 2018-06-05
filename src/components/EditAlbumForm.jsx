@@ -41,7 +41,7 @@ class EditAlbumForm extends Component {
       <div className='album-edit'>
         <input type='text' name='name' onChange={this.handleChange} value={this.props.album.name} />
         <input type='text' name='artist' onChange={this.handleChange} value={this.props.album.artist} />
-        <input type='number' name='price' min='0' onChange={this.handleChange} value={this.props.album.price} />
+        <input type='number' name='price' onChange={this.handleChange} value={this.props.album.price} />
         <textarea name='desc' onChange={this.handleChange} value={this.props.album.desc} />
         <OverlayTrigger placement="bottom" overlay={tooltip}>
           <input type='text' name='image' onChange={this.handleChange} value={this.props.album.image} />

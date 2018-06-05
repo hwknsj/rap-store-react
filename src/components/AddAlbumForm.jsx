@@ -42,7 +42,7 @@ class AddAlbumForm extends Component {
       <form className='album-edit' onSubmit={this.createAlbum}>
         <input name='name' ref={this.nameRef} type='text' placeholder='Name' />
         <input name='artist' ref={this.artistRef} type='text' placeholder='Artist' />
-        <input name='price' ref={this.priceRef} type='number' min='0' placeholder={`Price`} />
+        <input name='price' ref={this.priceRef} type='number' placeholder={`Price`} />
         <textarea name='desc' ref={this.descRef} placeholder='Desc' />
         <OverlayTrigger placement="bottom" overlay={tooltip}>
           <input name='image' ref={this.imageRef} type='text' placeholder='Image path / URL' />
